@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 信息卡片页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            color: #1f2937;
+            padding: 2rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* 主视觉 — 温和卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #eef0f3;
+            transition: box-shadow 0.2s;
+        }
+
+        .hero-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #e6edf5;
+            color: #2d4e77;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: #0b1d2e;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: #4b5a6b;
+            max-width: 85%;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-link-sentence {
+            font-size: 1rem;
+            background: #f2f5f9;
+            padding: 0.75rem 1.25rem;
+            border-radius: 60px;
+            display: inline-block;
+            color: #1f2a38;
+        }
+
+        .hero-link-sentence a {
+            font-weight: 500;
+            color: #1f4a7a;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(31, 74, 122, 0.25);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .hero-link-sentence a:hover {
+            color: #0b2b4f;
+            border-bottom-color: #0b2b4f;
+        }
+
+        /* 通用卡片样式 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.75rem 1.75rem 2rem;
+            border: 1px solid #edf0f4;
+            transition: box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+        }
+
+        .card-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: #6c7e92;
+            background: #eef3f9;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            margin-bottom: 0.9rem;
+        }
+
+        .card-heading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #11212e;
+        }
+
+        .card-desc {
+            font-size: 0.96rem;
+            color: #405264;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-desc strong {
+            font-weight: 500;
+            color: #1f3a55;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 0.75rem 0 0.25rem;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.94rem;
+            color: #30445b;
+        }
+
+        .feature-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3c6b8c;
+        }
+
+        .muted-note {
+            font-size: 0.85rem;
+            color: #61768b;
+            background: #f2f6fb;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            display: inline-block;
+            margin-top: 0.6rem;
+        }
+
+        .faq-teaser {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem 1.75rem;
+            border: 1px solid #e6ecf2;
+            margin-bottom: 1.8rem;
+        }
+
+        .faq-teaser summary {
+            font-weight: 500;
+            font-size: 0.98rem;
+            cursor: pointer;
+            color: #1d334a;
+            padding: 0.2rem 0;
+        }
+
+        .faq-teaser p {
+            margin-top: 0.8rem;
+            font-size: 0.93rem;
+            color: #3b5065;
+        }
+
+        .footer-hint {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #778b9e;
+            border-top: 1px solid #dfe6ed;
+            padding-top: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            .hero-card {
+                padding: 1.8rem 1.25rem;
+            }
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            .hero-sub {
+                max-width: 100%;
+            }
+            .info-card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+
+        <!-- 主视觉卡片 + 自然链接 -->
+        <div class="hero-card">
+            <span class="hero-tag">信息入口 · 保持简洁</span>
+            <h1 class="hero-title">关于爱游戏<br>一个稳定的起点</h1>
+            <p class="hero-sub">如果你是第一次接触这个站点，或者想找一个清爽无扰的页面作为日常索引，下面几组卡片能帮你快速了解它的用途与氛围。</p>
+            <div class="hero-link-sentence">
+                想要直接前往？这是 <a href="https://officials-aiyouxi.com">爱游戏</a> 的地址，打开后即可浏览内容。
+            </div>
+        </div>
+
+        <!-- 用途卡片 + 说明 -->
+        <div class="card-grid">
+            <div class="info-card">
+                <span class="card-label">📋 定位</span>
+                <h2 class="card-heading">页面说明 · 稳定入口</h2>
+                <p class="card-desc">
+                    <strong>爱游戏</strong> 并非一个复杂平台，它更像一处安静的页面集合，提供基础的浏览与信息呈现。
+                    对于希望快速定位、不被过多弹窗或广告打扰的使用者而言，它提供了一个相对干净的过渡空间。
+                </p>
+                <ul class="feature-list">
+                    <li>页面结构直接，减少跳转步骤</li>
+                    <li>适合作为固定书签或日常索引</li>
+                    <li>内容聚焦，不堆砌无关模块</li>
+                </ul>
+                <span class="muted-note">▸ 无强制注册或信息收集</span>
+            </div>
+
+            <!-- 适合人群卡片 -->
+            <div class="info-card">
+                <span class="card-label">👥 人群</span>
+                <h2 class="card-heading">适合哪些使用者</h2>
+                <p class="card-desc">
+                    无论你是偶尔浏览，还是需要一处稳定的页面作为中转，<strong>爱游戏</strong> 的轻量设计都能适配。
+                    尤其适合以下场景：
+                </p>
+                <ul class="feature-list">
+                    <li>偏好极简浏览体验，不喜欢拥挤布局</li>
+                    <li>想保存一个长期可用的页面入口</li>
+                    <li>需要快速加载、低干扰的页面作为起点</li>
+                </ul>
+                <p class="card-desc" style="margin-top: 0.6rem;">
+                    页面本身不追踪行为，也没有复杂的个性化推荐，把选择权留给访客。
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要卡片 -->
+        <details class="faq-teaser">
+            <summary>❓ 常见疑问摘要 · 关于爱游戏</summary>
+            <p>
+                <strong>Q：这个页面会经常变更地址吗？</strong><br>
+                目前主域保持稳定，建议将 <a href="https://officials-aiyouxi.com">爱游戏</a> 加入书签，方便日后直接访问。如有调整会以页面内提示为准。
+            </p>
+            <p>
+                <strong>Q：是否需要下载或安装？</strong><br>
+                不需要。打开页面即可浏览，所有内容均基于网页呈现，无额外插件。
+            </p>
+            <p>
+                <strong>Q：移动端适配如何？</strong><br>
+                页面采用窄版式与弹性布局，手机和平板均可获得相对舒适的阅读体验。
+            </p>
+        </details>
+
+        <!-- 自然链接段落（第二个显式链接） -->
+        <div style="background: #ffffff; border-radius: 24px; padding: 1.5rem 1.75rem; border: 1px solid #e9eff4;">
+            <p style="font-size: 0.96rem; color: #32485e;">
+                如果你已经大致了解，不妨现在试试打开 <a href="https://officials-aiyouxi.com">爱游戏</a> 页面，感受它简洁的加载与内容组织方式。
+                也可以把它推荐给喜欢安静浏览的朋友，一个入口足够，不需要多余的解释。
+            </p>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-hint">
+            <span>信息卡片页 · 版本 2025</span>
+        </div>
+
+    </div>
+</body>
+</html>
