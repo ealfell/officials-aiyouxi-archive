@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V体育 · 简明指南与使用提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f2f4;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            color: #2c2e33;
+            padding: 2rem 1.2rem;
+        }
+
+        .page-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* hero 区 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e4e6eb;
+            padding: 3.5rem 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1e1f23;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.15rem;
+            color: #5e6069;
+            max-width: 640px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #f1f2f4;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #3b3d44;
+            border: 1px solid #dcdde0;
+        }
+
+        /* 通用卡片 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e4e6eb;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1e1f23;
+            border-left: 4px solid #6b7280;
+            padding-left: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            color: #3e4048;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 优势区三列网格 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border: 1px solid #e4e6eb;
+            border-radius: 20px;
+            padding: 1.8rem 1.4rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #1e1f23;
+        }
+
+        .feature-item p {
+            color: #545760;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .faq-list li {
+            border-bottom: 1px solid #eceef0;
+            padding: 0.9rem 0;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #1e1f23;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #5b5e68;
+            font-size: 0.95rem;
+        }
+
+        /* 底部链接区 */
+        .footer-links {
+            text-align: center;
+            padding: 2rem 0 0.5rem;
+            border-top: 1px solid #dde0e4;
+            margin-top: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #3b3d44;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.6rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .footer-links a:hover {
+            border-bottom: 1px solid #6b7280;
+        }
+
+        .footer-note {
+            color: #888b94;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            .hero {
+                padding: 2.5rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .card {
+                padding: 1.8rem 1.5rem;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card h2 {
+                font-size: 1.25rem;
+                padding-left: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>V体育 · 简明指南</h1>
+        <p class="subhead">
+            一份关于使用路径、功能特点与访问注意事项的整理，帮助你快速了解这个平台的基础面貌。
+        </p>
+        <span class="tagline">基于实际使用体验 · 日常提醒</span>
+    </div>
+
+    <!-- 优势区 三卡片 -->
+    <div class="grid-3" style="margin-bottom: 2rem;">
+        <div class="feature-item">
+            <span class="icon">🧭</span>
+            <h3>结构清晰</h3>
+            <p>功能分区与导航经过多次调整，目前布局相对直观，从主要入口到具体页面之间步骤较少。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">⚙️</span>
+            <h3>功能覆盖面</h3>
+            <p>涵盖资讯浏览、数据参考及社区互动等模块，适合日常查阅与信息对比。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">📱</span>
+            <h3>多端适配</h3>
+            <p>移动端与桌面端的显示效果均经过样式适配，常用操作不会因屏幕尺寸而受限。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 卡片 -->
+    <div class="card">
+        <h2>使用场景与说明</h2>
+        <p><strong>简明指南：</strong> 在开始探索之前，建议先浏览平台的主要分区标题，这有助于快速定位感兴趣的内容。首页通常会展示近期动态和热门数据，可以作为起点。</p>
+        <p>如果你希望深入了解某个体育项目或赛事，可直接通过搜索或分类筛选进入对应页面。注意部分板块需要保持网络稳定，加载时间会受本地网络环境的影响。</p>
+        <p>平台内置的社区讨论区允许用户发表观点，但请遵守基本交流礼仪，避免发布未经核实的信息。团队会定期清理违规内容以维持讨论秩序。</p>
+        <p>如需获取实时数据或比分，建议开启浏览器定位或手动选择时区，以确保时间显示准确。数据来源以官方统计为基础，但存在轻微延迟属于正常情况。</p>
+    </div>
+
+    <!-- 访问提醒卡片 -->
+    <div class="card">
+        <h2>访问提醒</h2>
+        <p><strong>网络与安全：</strong> 使用过程中请确保连接的是可信网络。不要在公共场所的未知 Wi-Fi 下输入个人账户信息。如果发现页面异常或跳转可疑，请立即关闭标签页。</p>
+        <p><strong>账户保护：</strong> 注册时请使用高强度密码，并避免与其他平台重复。建议开启二次验证（如果平台提供）。不要向任何人透露你的登录凭证。</p>
+        <p><strong>信息甄别：</strong> 平台上用户发布的内容不代表官方立场。涉及赛事预测、数据解读等，请多方对比，谨慎参考。理性看待比赛结果，保持娱乐心态。</p>
+        <p><strong>适用人群：</strong> 本平台仅供成年人使用。如果你对体育信息有强烈兴趣，可以把它作为信息渠道之一，但不构成任何实质性建议。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <h2>常见问题摘要</h2>
+        <ul class="faq-list">
+            <li>
+                <div class="faq-q">Q：如何快速找到正在进行的赛事？</div>
+                <div class="faq-a">首页顶部通常设有「实时」或「进行中」的筛选标签，点击后即可看到当前活跃的赛事列表。</div>
+            </li>
+            <li>
+                <div class="faq-q">Q：视频或数据加载较慢怎么办？</div>
+                <div class="faq-a">尝试切换网络环境（例如从 Wi-Fi 切换到移动数据），或者关闭后台占用带宽的应用。部分内容可能需要较新版本的浏览器。</div>
+            </li>
+            <li>
+                <div class="faq-q">Q：是否可以自定义关注的项目？</div>
+                <div class="faq-a">登录账户后，在个人中心可以添加关注标签，之后相关动态会优先展示在你的信息流中。</div>
+            </li>
+            <li>
+                <div class="faq-q">Q：如何联系平台支持团队？</div>
+                <div class="faq-a">页面底部通常设有「联系」或「帮助中心」入口，提交工单后一般会在 1-3 个工作日内得到回复。</div>
+            </li>
+        </ul>
+        <p style="margin-top: 0.8rem; color: #5e6069; font-size: 0.9rem;">更多细节可自行探索，或参考平台帮助文档。</p>
+    </div>
+
+    <!-- 底部链接区 包含V体育链接 -->
+    <div class="footer-links">
+        <p style="margin-bottom: 0.6rem;">
+            如果你想了解完整功能与最新动态，可以前往
+            <a href="https://index-vty.com">V体育</a>
+            查看。页面内容仅供个人参考，不构成任何形式的承诺。
+        </p>
+        <div class="footer-note">
+            © 2025 · 信息整理页 · 非官方声明
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
