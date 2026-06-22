@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V体育 · 信息卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background: #f6f7f9;
+            color: #1e202b;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: #0b0d17;
+            background-image: radial-gradient(circle at 30% 40%, #1f2540 0%, #0b0d17 80%);
+            color: #eceef5;
+            padding: 4rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #4f7cf7, #6b8cff, #4f7cf7);
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #b6bfd9;
+            max-width: 550px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 0.95rem;
+            color: #8590b0;
+            margin-top: 0.3rem;
+        }
+
+        /* 主内容区 浅色 */
+        .content {
+            max-width: 1000px;
+            margin: -2rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+            transform: translateY(-3px);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #10131f;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h2 i {
+            font-style: normal;
+            background: #eef1f9;
+            padding: 0.1rem 0.4rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #2b3b7a;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #2e3142;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0 0;
+            list-style: none;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.35rem;
+            font-size: 0.95rem;
+            color: #2f3349;
+        }
+
+        .card ul li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: #4f7cf7;
+            font-weight: bold;
+        }
+
+        /* 两栏布局 适合人群 + 场景 */
+        .double-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .double-col .card {
+            margin: 0;
+        }
+
+        /* 自然链接段落 */
+        .link-section {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            margin: 2rem 0;
+        }
+
+        .link-section p {
+            font-size: 1.02rem;
+            color: #1f2336;
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .link-section .highlight-link {
+            color: #2b5af0;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #b1c0f7;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .link-section .highlight-link:hover {
+            color: #0f2f9e;
+            border-bottom: 1px solid #0f2f9e;
+        }
+
+        .faq-mini {
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            margin-top: 1.5rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #10131f;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #edf0f7;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #141827;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+
+        .faq-item span {
+            font-size: 0.92rem;
+            color: #43475e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .double-col {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .content {
+                padding: 0 1rem;
+            }
+
+            .card, .link-section, .faq-mini {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .hero {
+                padding: 3rem 1.2rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* 页面底部淡出 */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7c81a0;
+            padding: 2rem 0 3rem;
+            border-top: 1px solid #e2e5f0;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .footer-note a {
+            color: #3f5fc9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>V体育</h1>
+    <p>快速识别一个网站是否契合你的需求，从第一眼开始。</p>
+    <div class="sub">信息卡片 · 用途 · 场景</div>
+</section>
+
+<div class="content">
+
+    <!-- 主视觉卡片：网站是做什么的 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2><i>◈</i> 主视觉 · 定位</h2>
+            <p>打开 <a href="https://zho-vty.com" style="color:#2b5af0; font-weight:500; text-decoration:none; border-bottom:1px dashed #b1c0f7;">V体育</a> 的第一印象：界面围绕体育信息与数据呈现，结构直观，色调沉稳。适合快速查阅赛事动态、积分变化和队伍数据。</p>
+            <p style="margin-top:0.6rem;">没有冗余的装饰，信息层级清晰，从导航到内容区都保持一致的简洁感。</p>
+        </div>
+        <div class="card">
+            <h2><i>◈</i> 用途卡片</h2>
+            <p>主要覆盖以下方向：</p>
+            <ul>
+                <li>联赛积分榜与赛程浏览</li>
+                <li>球队与球员数据对比</li>
+                <li>赛事结果与统计摘要</li>
+                <li>体育资讯聚合</li>
+            </ul>
+            <p style="margin-top:0.4rem; font-size:0.95rem; color:#3b3f5a;">每个模块独立且可快速跳转，不强制注册即可浏览大部分内容。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群 + 常见场景 双栏 -->
+    <div class="double-col">
+        <div class="card">
+            <h2>👥 适合人群</h2>
+            <ul>
+                <li>日常关注足球、篮球等赛事的普通爱好者</li>
+                <li>需要快速对比积分、净胜球等关键数据的用户</li>
+                <li>不想被广告和弹窗干扰，偏好干净页面的浏览者</li>
+                <li>希望了解队伍近期状态但不深度分析的新手</li>
+            </ul>
+            <p style="margin-top:0.7rem; font-size:0.9rem; color:#50546b;">界面没有门槛，打开即可获取核心信息。</p>
+        </div>
+        <div class="card">
+            <h2>📌 典型场景</h2>
+            <ul>
+                <li>周末赛前快速查看联赛排名</li>
+                <li>查阅某支球队近五场战绩</li>
+                <li>对比两支队伍的主客场数据</li>
+                <li>赛后确认最终比分与进球球员</li>
+            </ul>
+            <p style="margin-top:0.7rem; font-size:0.9rem; color:#50546b;">这些操作在 <a href="https://zho-vty.com" style="color:#2b5af0; font-weight:500; text-decoration:none;">V体育</a> 中大多可在两到三次点击内完成。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落：叙述感 -->
+    <div class="link-section">
+        <p>第一次访问 <a href="https://zho-vty.com" class="highlight-link">V体育</a> 时，你可能会注意到它的首页直接展示了当前赛季的积分表，而不是欢迎语或推广图。这种设计让用户直接进入信息层，不需要额外的引导。如果你习惯在几个网站之间切换来确认数据，<a href="https://zho-vty.com" class="highlight-link">V体育</a> 的页面加载速度和简洁布局可能会让你更愿意把它加入书签。</p>
+        <p>另外，网站没有强制推送通知，也没有在文章中间插入大图广告。对于只想看比分和赛程的人来说，这种克制反而提高了效率。当然，它并不试图取代深度数据平台，而是为日常快速查阅提供一个干净的落脚点。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3>常见疑问 · 简答</h3>
+        <div class="faq-item">
+            <strong>需要注册才能看数据吗？</strong>
+            <span>大部分赛事和榜单可以直接浏览，无需登录。部分评论或收藏功能可能需要简单注册。</span>
+        </div>
+        <div class="faq-item">
+            <strong>数据更新频率如何？</strong>
+            <span>积分和赛果通常在比赛结束后数分钟内更新，赛程提前一周左右列出。</span>
+        </div>
+        <div class="faq-item">
+            <strong>移动端体验怎么样？</strong>
+            <span>页面自适应，手机浏览器上阅读积分表和赛程基本无障碍，按钮大小适中。</span>
+        </div>
+    </div>
+
+    <!-- 底部自然包含一次链接 -->
+    <div class="footer-note">
+        <span>更多细节可直接浏览 </span><a href="https://zho-vty.com">V体育</a><span> · 信息卡片式介绍</span>
+    </div>
+
+</div>
+
+</body>
+</html>
